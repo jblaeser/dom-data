@@ -39,6 +39,18 @@ for(var i = 0; i < speechesArray.length; i++){
   };
 };
 
+function noRed (){
+  for(i=0; i<pageArticles.length; i++) {
+    pageArticles[i].classList.remove("generous-donation");
+  };
+};
+
+function addRed (){
+  for(i=0; i<pageArticles.length; i++) {
+    pageArticles[i].classList.add("generous-donation");
+  };
+};
+
 document.getElementById('BtnDonate').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Donate" button.
 
@@ -49,23 +61,15 @@ document.getElementById('BtnDonate').addEventListener('click', function(){
   if(donation < 100 && donation !== null){
     donationHeader.innerHTML = "Thank you for your donation of $" + donation + "!";
     donationHeader.setAttribute("style", "color: #fff; text-align: center; font-size: 1.25em");
-
-    for(i=0; i<pageArticles.length; i++) {
-      pageArticles[i].classList.remove("generous-donation");
-    };
+    noRed();
   } else if(donation >= 100 && donation !== null){
     donationHeader.innerHTML = "Thank you for your very generous donation of $" + donation + "!";
     donationHeader.setAttribute("style", "color: #DB152C; text-align: center; font-size: 2em");
-    
-    for(i=0; i<pageArticles.length; i++) {
-      pageArticles[i].classList.add("generous-donation");
-    };
+    addRed();
   } else {
     donationHeader.innerHTML = "Are you sure you entered an amount?";
     donationHeader.setAttribute("style", "color: #fff; text-align: center; font-size: 1.25em");
-      
-    for(i=0; i<pageArticles.length; i++) {
-        pageArticles[i].classList.remove("generous-donation")};
+    noRed();
   };
 });
 
