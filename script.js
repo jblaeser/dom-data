@@ -27,6 +27,8 @@ var churchillSpeech = {
 
     donationHeader = document.createElement("h3");
 
+    pageArticles = document.getElementsByTagName("article");
+
 
 for(var i = 0; i < speechesArray.length; i++){
   if(speechesArray[i].year < oldest){
@@ -34,30 +36,39 @@ for(var i = 0; i < speechesArray.length; i++){
   }
   if(speechesArray[i].year > newest){
     newest = speechesArray[i].year;
-  }
-}
+  };
+};
 
 document.getElementById('BtnDonate').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Donate" button.
 
-
-
   donation = window.prompt("How much would you like to donate?");
+  consoleDisplay.innerHTML = "";
   consoleDisplay.append(donationHeader);
 
-  if(donation < 100){
+  if(donation < 100 && donation !== null){
     donationHeader.innerHTML = "Thank you for your donation of $" + donation + "!";
-  } else if (donation >= 100){
+    donationHeader.setAttribute("style", "color: #fff; text-align: center; font-size: 1.25em");
+
+    for(i=0; i<pageArticles.length; i++) {
+      pageArticles[i].classList.remove("generous-donation");
+    };
+  } else if(donation >= 100 && donation !== null){
     donationHeader.innerHTML = "Thank you for your very generous donation of $" + donation + "!";
+    donationHeader.setAttribute("style", "color: #DB152C; text-align: center; font-size: 2em");
+    
+    for(i=0; i<pageArticles.length; i++) {
+      pageArticles[i].classList.add("generous-donation");
+    };
+  } else {
+    donationHeader.innerHTML = "Are you sure you entered an amount?";
+    donationHeader.setAttribute("style", "color: #fff; text-align: center; font-size: 1.25em");
+      
+    for(i=0; i<pageArticles.length; i++) {
+        pageArticles[i].classList.remove("generous-donation")};
   };
-
-
-  
-
-
-
-
 });
+
 
 document.getElementById('BtnChurchill').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Churchill" button.
@@ -69,7 +80,6 @@ document.getElementById('BtnChurchill').addEventListener('click', function(){
     consoleDisplay.innerHTML += "<br> <br> This speech took place during the common era."
   }
 
-
   if(speechesArray[0].year === oldest){
     consoleDisplay.innerHTML += "<br> <br> This is the oldest speech on the page.";
   } else if(speechesArray[0].year === newest){
@@ -78,6 +88,7 @@ document.getElementById('BtnChurchill').addEventListener('click', function(){
     consoleDisplay.innerHTML += "<br> <br> This is neither the oldest nor the most recent speech on the page."
   }
 });
+
 
 document.getElementById('BtnGhandi').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Ghandi" button.
@@ -89,7 +100,6 @@ document.getElementById('BtnGhandi').addEventListener('click', function(){
     consoleDisplay.innerHTML += "<br> <br> This speech took place during the common era."
   }
 
-
   if(speechesArray[1].year === oldest){
     consoleDisplay.innerHTML += "<br> <br> This is the oldest speech on the page.";
   } else if(speechesArray[1].year === newest){
@@ -98,6 +108,7 @@ document.getElementById('BtnGhandi').addEventListener('click', function(){
     consoleDisplay.innerHTML += "<br> <br> This is neither the oldest nor the most recent speech on the page."
   }
 });
+
 
 document.getElementById('BtnDemosthenes').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Demosthenes" button.
@@ -108,7 +119,6 @@ document.getElementById('BtnDemosthenes').addEventListener('click', function(){
   } else{
     consoleDisplay.innerHTML += "<br> <br> This speech took place during the common era."
   }
-
 
   if(speechesArray[2].year === oldest){
     consoleDisplay.innerHTML += "<br> <br> This is the oldest speech on the page.";
