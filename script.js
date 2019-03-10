@@ -18,12 +18,15 @@ var churchillSpeech = {
       'authorAge': '42'
     },
     speechesArray = [churchillSpeech, ghandiSpeech, demosthenesSpeech],
-    donatePrompt;
+    donatePrompt,
 
-    consoleDisplay = document.getElementById("ConsoleDisplay");
+    consoleDisplay = document.getElementById("ConsoleDisplay"),
 
     oldest = speechesArray[0].year,
-    newest = speechesArray[0].year;
+    newest = speechesArray[0].year,
+
+    donationHeader = document.createElement("h3");
+
 
 for(var i = 0; i < speechesArray.length; i++){
   if(speechesArray[i].year < oldest){
@@ -36,6 +39,24 @@ for(var i = 0; i < speechesArray.length; i++){
 
 document.getElementById('BtnDonate').addEventListener('click', function(){
   //Code in here executes when the user clicks the "Donate" button.
+
+
+
+  donation = window.prompt("How much would you like to donate?");
+  consoleDisplay.append(donationHeader);
+
+  if(donation < 100){
+    donationHeader.innerHTML = "Thank you for your donation of $" + donation + "!";
+  } else if (donation >= 100){
+    donationHeader.innerHTML = "Thank you for your very generous donation of $" + donation + "!";
+  };
+
+
+  
+
+
+
+
 });
 
 document.getElementById('BtnChurchill').addEventListener('click', function(){
