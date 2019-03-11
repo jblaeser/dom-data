@@ -66,13 +66,11 @@ document.getElementById('BtnDonate').addEventListener('click', function(){
     donationHeader.innerHTML = "Thank you for your very generous donation of $" + donation + "!";
     donationHeader.setAttribute("style", "color: #DB152C; text-align: center; font-size: 2em");
     addRed();
-  } else if(donation == 0){
+  } else if(donation <= 0){
     consoleDisplay.innerHTML = "<img src='img/poor.gif'>";
     donationHeader.innerHTML = "";
     noRed();
-  }
-  
-  else {
+  } else {
     donationHeader.innerHTML = "Are you sure you entered an amount?";
     donationHeader.setAttribute("style", "color: #fff; text-align: center; font-size: 1.25em");
     noRed();
